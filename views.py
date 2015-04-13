@@ -49,7 +49,7 @@ def pngImage(request, width, height, fileFormat, color, background):
     img = Image.new("RGB", (width, height), '#'+str(background))
     draw = ImageDraw.Draw(img)
 
-    if int(width) > 28:
+    if width > 28:
         text = "%dx%d"%(width, height)
         fontName = "Courier New.ttf"
         fontSize = 50
