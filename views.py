@@ -61,7 +61,7 @@ def pngImage(request, width, height, fileFormat, color, background):
         font = ImageFont.truetype(fontName, fontSize)
 
         # find best fitting fontsize
-        while draw.textsize(text, font)[0] > (fontImageRatio * img.size[0]):
+        while (fontSize > 1) and (draw.textsize(text, font)[0] > (fontImageRatio * img.size[0])):
             fontSize -= 1
             font = ImageFont.truetype(fontName, fontSize)
 
