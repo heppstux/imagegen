@@ -33,28 +33,28 @@ If you want to run this on a public server READ DJANGO'S DOCUMENTATION! Also, I 
 
 ### Image Size
 
-http://hostname/`WIDTH`
+http://example.com/`WIDTH`
 
-http://hostname/`WIDTH`x`HEIGHT`
+http://example.com/`WIDTH`x`HEIGHT`
 
 Note: `HEIGHT` is always optional and defaults to `WIDTH`.
 
 #### Example
-_http://hostname/300_ will give you a 300x300px sized PNG
+_http://example.com/300_ will give you a 300x300px sized PNG
 
-_http://hostname/800x600_ will give you a 800x600px sized PNG
+_http://example.com/800x600_ will give you a 800x600px sized PNG
 
 ### Colors
 
 #### Text Color:
-http://hostname/WIDTHxHEIGHT/`HEXCOL`
+http://example.com/WIDTHxHEIGHT/`HEXCOL`
 
-`HEXCOL` can be any 6-digit hex color number formatted in RRGGBB.
+`HEXCOL` can be any 3- or 6-digit hex color number formatted in RGB or RRGGBB.
 
 #### Background Color:
-http://hostname/WIDTHxHEIGHT/HEXCOL/`HEXCOL`
+http://example.com/WIDTHxHEIGHT/HEXCOL/`HEXCOL`
 
-`HEXCOL` can be any 6-diget hex color number formatted in RRGGBB.
+`HEXCOL` can be any 3- or 6-digit hex color number formatted in RGB or RRGGBB.
 
 ### File Format
 
@@ -62,15 +62,24 @@ Append `.png`, `.jpg` or `.jpeg` to the previous mentioned URLS. Defaults to `.p
 
 #### Example
 
-_http://hostname/800x600.jpeg_
+_http://example.com/800x600.jpeg_
 
-_http://hostname/800x600/FF00FF.jpeg_
+_http://example.com/800x600/FF00FF.jpeg_
 
 ### Customize Text
 
-http://hostname/WIDTHxHEIGHT`?text=Plus+will+be+interpreted+as+white+space`
+http://example.com/WIDTHxHEIGHT`?text=Plus+will+be+interpreted+as+white+space`
 
-Make sure `?text` is attached behind any File Format specifying URL extension e.g. _http://hostname/800x600/FF00FF.jpeg?text=this+is+correct_
+Make sure `?text` is attached behind any File Format specifying URL extension e.g. _http://example.com/800x600/FF00FF.jpeg?text=this+is+correct_
+
+
+### URL Scheme Overview
+
+    ^(((?P<width>\d+)(x(?P<height>\d+))?(/(?P<color>[0-9A-Fa-f]{6}|[0-9A-Fa-f]{3}))?)(/(?P<background>[0-9A-Fa-f]{6}|[0-9A-Fa-f]{3}))?)(?P<fileFormat>(\.png|\.jpg|\.jpeg)?)$
+
+![Regular expression visualization](https://www.debuggex.com/i/lykm5bZ0uezvS66m.png)
+
+[URL Scheme (thanks to debuggex.com)](https://www.debuggex.com/r/lykm5bZ0uezvS66m)
 
 
 # License
