@@ -19,7 +19,6 @@
 from django.http import HttpResponse
 from PIL import Image, ImageDraw, ImageFont
 
-
 # Create your views here.
 def draw_text_center(im, draw, text, font, **kwargs):
     text_size = draw.textsize(text, font)
@@ -49,14 +48,23 @@ def pngImage(request, width, height, fileFormat, color, background):
     img = Image.new("RGB", (width, height), '#'+str(background))
     draw = ImageDraw.Draw(img)
 
-    if width > 28:
-        text = "%dx%d"%(width, height)
+
+    if request.GET.get('icon'):
+        iconCode = request.GET.get('icon')
+        from fontawesome2 import faIcons
+        try:
+            faIcon = faIcons.get(iconCode)
+            faFont = ImageFont.truetype("FontAwesome.otf", int(min(height, width)/1.5))
+            draw_text_center(img, draw, faIcon, font=faFont, fill='#'+str(color))
+        except:
+            pass
+
+    elif width > 28:
         fontName = "Courier New.ttf"
         fontSize = 50
         fontImageRatio = 0.8
 
-        if request.GET.get('text'):
-            text = request.GET.get('text')
+        text = request.GET.get('text') or "%dx%d"%(width, height)
 
         font = ImageFont.truetype(fontName, fontSize)
 
@@ -66,6 +74,7 @@ def pngImage(request, width, height, fileFormat, color, background):
             font = ImageFont.truetype(fontName, fontSize)
 
         draw_text_center(img, draw, text, font=font, fill='#'+str(color))
+
 
     response = HttpResponse(content_type="image/%s"%(fileFormat))
 
