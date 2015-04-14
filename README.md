@@ -111,11 +111,9 @@ Attention: If `icon` is present no text will be rendered.
 
 ### URL Scheme Overview
 
-    ^(((?P<width>\d+)(x(?P<height>\d+))?(/(?P<color>[0-9A-Fa-f]{6}|[0-9A-Fa-f]{3}))?)(/(?P<background>[0-9A-Fa-f]{6}|[0-9A-Fa-f]{3}))?)(@(?P<retinaSupport>[1-3])x)?(?P<fileFormat>(\.png|\.jpg|\.jpeg)?)$
+    ^(?P<width>\d+)(x(?P<height>\d+))?(/(?P<color>[0-9A-Fa-f]{6}|[0-9A-Fa-f]{3}))?(/(?P<background>[0-9A-Fa-f]{6}|[0-9A-Fa-f]{3}))?(@(?P<retinaSupport>[1-3])x)?(?P<fileFormat>(\.png|\.jpg|\.jpeg)?)$
 
-![Regular expression visualization](https://www.debuggex.com/i/0dxmMKY2KsKC9FCb.png)
-
-[URL Scheme (thanks to debuggex.com)](https://www.debuggex.com/r/0dxmMKY2KsKC9FCb.png)
+![Regular expression visualization](https://www.debuggex.com/i/adwjOVTURPZc0KzM.png)
 
 ---
 
