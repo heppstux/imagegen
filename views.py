@@ -29,9 +29,12 @@ def draw_text_center(im, draw, text, font, **kwargs):
 
 
 
-def pngImage(request, width, height, fileFormat, color, background):
+def pngImage(request, width, height, fileFormat, retinaSupport, color, background):
 
+    retinaFaktor = int(retinaSupport or 1)
     height = height or width
+    width = min(int(width) * retinaFaktor, 4096)
+    height = min(int(height) * retinaFaktor, 4096)
 
     fileFormat = fileFormat or '.png'
     color = color or '979797'
@@ -40,9 +43,6 @@ def pngImage(request, width, height, fileFormat, color, background):
     fileFormat = fileFormat[1:]
     if fileFormat == "jpg":
         fileFormat = "jpeg"
-
-    width = min(int(width), 4096)
-    height = min(int(height), 4096)
 
 
     img = Image.new("RGB", (width, height), '#'+str(background))
@@ -61,10 +61,11 @@ def pngImage(request, width, height, fileFormat, color, background):
 
     elif width > 28:
         fontName = "Courier New.ttf"
-        fontSize = 50
+        fontSize = 50 * retinaFaktor
         fontImageRatio = 0.8
 
-        text = request.GET.get('text') or "%dx%d"%(width, height)
+        text = request.GET.get('text') or "%dx%d%s"%(width/retinaFaktor, height/retinaFaktor,
+                                                    ("@%dx"%(retinaFaktor) if retinaFaktor > 1 else ""))
 
         font = ImageFont.truetype(fontName, fontSize)
 

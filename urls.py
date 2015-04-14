@@ -18,5 +18,5 @@
 from django.conf.urls import patterns, url
 
 urlpatterns = patterns('',
-    url(r'^(((?P<width>\d+)(x(?P<height>\d+))?(/(?P<color>[0-9A-Fa-f]{6}|[0-9A-Fa-f]{3}))?)(/(?P<background>[0-9A-Fa-f]{6}|[0-9A-Fa-f]{3}))?)(?P<fileFormat>(\.png|\.jpg|\.jpeg)?)$', 'imagegen.views.pngImage'),
+    url(r'^(((?P<width>\d+)(x(?P<height>\d+))?(/(?P<color>[0-9A-Fa-f]{6}|[0-9A-Fa-f]{3}))?)(/(?P<background>[0-9A-Fa-f]{6}|[0-9A-Fa-f]{3}))?)(@(?P<retinaSupport>[1-3])x)?(?P<fileFormat>(\.png|\.jpg|\.jpeg)?)$', 'imagegen.views.pngImage'),
 )
