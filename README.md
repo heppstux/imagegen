@@ -8,19 +8,19 @@ This application has been developed in a "30 Minutes Situation", where placehold
 
 Please refer to the official Django documentation on how to deploy Django applications.
 
-Note that WIP requires a font named "Courier New.ttf" installed on your system.
+Note that WIP requires a font named "Courier New.ttf" and "FontAwesome.otf" in an accessible path.
 
 You should succeed with a little background knowledge by following these steps:
 
 Install Django on the Development System.
 
-1. Create a Virtual Environment ```virtual-env YOURENVNAME``` and...
+1. create a Virtual Environment ```virtual-env YOURENVNAME``` and...
 2. ...activate it ```source YOURENVNAME/bin/active```.
-3. Install required packages into the new venv (pip recommended) ```pip install Django Pillow```
-4. Create a Django Project ```django-admin startproject YOURNAME```
+3. install required packages into the new venv (pip recommended) ```pip install Django Pillow```
+4. create a Django Project ```django-admin startproject YOURNAME```
 5. clone the repository into the new Django project ```git clone URL-TO-THIS-REPO```
-6. Modify _settings.py_ by add ```imagegen``` to your ```INSTALLED_APPS```
-7. Add ```url(r'^', include('imagegen.urls')),``` to your _urls.py_
+6. modify _settings.py_ by add ```imagegen``` to your ```INSTALLED_APPS```
+7. add ```url(r'^', include('imagegen.urls')),``` to your _urls.py_
 8. start the development-server ```./manage.py runserver```
 
 
@@ -71,6 +71,12 @@ _http://example.com/800x600/FF00FF.jpeg_
 http://example.com/WIDTHxHEIGHT`?text=Plus+will+be+interpreted+as+white+space`
 
 Make sure `?text` is attached behind any File Format specifying URL extension e.g. _http://example.com/800x600/FF00FF.jpeg?text=this+is+correct_
+
+### Icons
+
+http://example.com/WIDTHxHEIGHT`?icon=anyFontAwesomeIconName`
+
+Attention: If `icon` is present no text will be rendered.
 
 
 ### URL Scheme Overview
