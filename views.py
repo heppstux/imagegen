@@ -80,6 +80,5 @@ def pngImage(request, width, height, fileFormat, retinaSupport, color, backgroun
     response = HttpResponse(content_type="image/%s"%(fileFormat))
 
     img.save(response, fileFormat)
-    response['Cache-Control'] = 'max-age=64800'
 
     return response
